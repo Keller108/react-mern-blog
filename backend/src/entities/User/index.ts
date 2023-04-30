@@ -1,1 +1,0 @@
-export * as UserModel from './model/UserModel';

@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import { validationResult } from 'express-validator';
 import { registerValidation } from '../validations/auth.js';
-import UserModel from "../entities/User";
+import UserModel from "../entities/User/model/UserModel.js";
 
 const app = express();
 
@@ -34,7 +34,7 @@ app.post("/auth/register", registerValidation, async (req, res) => {
         email: req.body.email,
         fullName: req.body.fullName,
         avatarUrl: req.body.avatarUrl,
-        password: passwordHash,
+        passwordHash: passwordHash,
     });
 
     const user = await doc.save();
